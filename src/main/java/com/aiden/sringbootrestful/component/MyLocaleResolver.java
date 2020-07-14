@@ -1,7 +1,6 @@
 package com.aiden.sringbootrestful.component;
 
 
-import org.apache.tomcat.jni.Local;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.LocaleResolver;
 
@@ -11,6 +10,9 @@ import java.util.Locale;
 
 
 public class MyLocaleResolver implements LocaleResolver {
+    /**
+     * 获取请求参数中的区域信息,以实现点击登录页切换中英文
+     */
     @Override
     public Locale resolveLocale(HttpServletRequest request) {
         String l = request.getParameter("l");
