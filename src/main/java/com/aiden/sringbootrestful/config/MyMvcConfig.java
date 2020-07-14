@@ -1,24 +1,16 @@
 package com.aiden.sringbootrestful.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/*WebMvcConfigurationSuppor会访问不到静态资源*/
 @Configuration
-public class MyMvcConfig extends WebMvcConfigurationSupport {
-
+public class MyMvcConfig implements WebMvcConfigurer {
 
     @Override
-    protected void addViewControllers(ViewControllerRegistry registry) {
+    public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/index.html").setViewName("index");
     }
-
-    @Override
-    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
-    }
-
-
 }

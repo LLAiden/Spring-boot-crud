@@ -9,16 +9,17 @@
     <!-- Bootstrap core CSS -->
     <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="asserts/css/signin.css" th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+    <link th:href="@{/asserts/css/signin.css}" rel="stylesheet">
 </head>
 
 <body class="text-center">
 <form class="form-signin" action="dashboard.html">
-    <img class="mb-4" src="asserts/img/bootstrap-solid.svg" th:src="@{/asserts/img/bootstrap-solid.svg}" alt=""
+    <img class="mb-4" th:src="@{/asserts/img/bootstrap-solid.svg}" alt=""
          width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
     <label class="sr-only" th:text="#{login.username}">Username</label>
-    <input type="text" class="form-control" placeholder="Username"  th:placeholder="#{login.username}" required="" autofocus="">
+    <input type="text" class="form-control" placeholder="Username" th:placeholder="#{login.username}" required=""
+           autofocus="">
     <label class="sr-only" th:text="#{login.password}">Password</label>
     <input type="password" class="form-control" placeholder="Password" th:placeholder="#{login.password}" required="">
     <div class="checkbox mb-3">
