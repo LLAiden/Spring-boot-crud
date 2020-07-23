@@ -7,10 +7,8 @@ import com.aiden.sringbootrestful.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collection;
 
@@ -56,8 +54,17 @@ public class EmployeeController {
 
     @PutMapping("/emp")
     public String updateEmployee(Employee employee) {
-        System.out.println("update "+employee);
+        System.out.println("update " + employee);
         employeeDao.save(employee);
         return "redirect:empList";
+    }
+
+    @DeleteMapping("/emp/{id}")
+    public String delEmp(@PathVariable("id") Integer id, Model model) {
+        employeeDao.delete(id);
+        System.out.println("删除: " + id);
+        Collection<Employee> all = employeeDao.getAll();
+        model.addAttribute("empList", all);
+        return "emp/list";
     }
 }
